@@ -1,0 +1,13 @@
+CREATE INDEX index_city ON cities (city);
+ALTER TABLE cities ADD CONSTRAINT city_unique UNIQUE (city, region);
+
+TRUNCATE TABLE cities;
+ALTER TABLE cities DROP INDEX index_city;
+
+create table cities (id bigint not null auto_increment, city varchar(255) not null, region varchar(255) not null, primary key (id)) engine=InnoDB
+create table users (user_id bigint not null, first_symbol char(1) not null, primary key (user_id)) engine=InnoDB
+create table users_cities (user_id bigint not null, id bigint not null) engine=InnoDB
+alter table users_cities add constraint FKfkpv60xxxa950tpnnlr941d6f foreign key (id) references cities (id)
+alter table users_cities add constraint FKr58qmgwmn59s28nbepo6bj4f3 foreign key (user_id) references users (user_id)
+create index index_city on cities (city);
+alter table cities add constraint city_unique unique (city, region);
